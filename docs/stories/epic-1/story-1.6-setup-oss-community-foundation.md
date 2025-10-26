@@ -260,7 +260,7 @@ body:
       placeholder: |
         - OS: macOS 14.0
         - Node: v20.10.0
-        - Catalyst Version: 2.0.0
+        - Catalyst Version: 0.1.0
     validations:
       required: true
 

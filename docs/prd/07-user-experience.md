@@ -272,7 +272,7 @@ Need help? https://github.com/your-org/catalyst/issues
 
 ```
 ┌─────────────────────────────────────────┐
-│     Catalyst Setup Wizard v2.0.0        │
+│     Catalyst Setup Wizard v0.1.0        │
 └─────────────────────────────────────────┘
 
 Welcome to Catalyst! Let's set up your AI development environment.
@@ -543,7 +543,7 @@ $ catalyst config restore ~/.catalyst/backups/config_20251026.yaml
 $ catalyst update --rollback
 
 Rolling back to previous version...
-  ⏪ Catalyst 2.1.0 → 2.0.0
+  ⏪ Catalyst 2.1.0 → 0.1.0
   ⏪ BMAD 4.45.0 → 4.44.1
   ✅ Rollback complete
 
@@ -562,7 +562,7 @@ Verify installation:
 ```bash
 $ catalyst --help
 
-Catalyst v2.0.0 - AI Development Environment
+Catalyst v0.1.0 - AI Development Environment
 
 Usage: catalyst <command> [options]
 

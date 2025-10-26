@@ -1,6 +1,6 @@
 # Data Architecture
 
-**Version:** 2.0.0
+**Version:** 0.1.0
 **Last Updated:** October 26, 2025
 
 [Back to Architecture Index](README.md)
@@ -12,7 +12,7 @@
 ### Global Installation (Homebrew)
 
 ```
-/opt/homebrew/Cellar/catalyst/2.0.0/
+/opt/homebrew/Cellar/catalyst/0.1.0/
 ├── bin/
 │   └── catalyst                    # Executable (points to dist/index.js)
 ├── dist/                           # Compiled TypeScript

@@ -61,7 +61,7 @@ This story creates the main CLI entry point using Commander.js, establishing the
 ### 3. Version Command
 - [ ] `catalyst --version` displays version from package.json
 - [ ] `catalyst -v` works as alias
-- [ ] Version format: `2.0.0` (semver)
+- [ ] Version format: `0.1.0` (semver)
 - [ ] Version read dynamically from package.json
 
 ### 4. Help Command

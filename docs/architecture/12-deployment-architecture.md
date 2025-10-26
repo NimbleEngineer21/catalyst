@@ -1,6 +1,6 @@
 # Deployment Architecture
 
-**Version:** 2.0.0
+**Version:** 0.1.0
 **Last Updated:** October 26, 2025
 
 [Back to Architecture Index](README.md)
@@ -15,9 +15,9 @@
 class Catalyst < Formula
   desc "AI-powered development environment with MCP servers and BMAD methodology"
   homepage "https://github.com/your-org/catalyst"
-  url "https://github.com/your-org/catalyst/releases/download/v2.0.0/catalyst-2.0.0.tar.gz"
+  url "https://github.com/your-org/catalyst/releases/download/v0.1.0/catalyst-0.1.0.tar.gz"
   sha256 "CALCULATED_DURING_BUILD"
-  version "2.0.0"
+  version "0.1.0"
   license "MIT"
 
   depends_on "node@20"
@@ -49,7 +49,7 @@ class Catalyst < Formula
 
   test do
     system bin/"catalyst", "--version"
-    assert_match "2.0.0", shell_output("#{bin}/catalyst --version")
+    assert_match "0.1.0", shell_output("#{bin}/catalyst --version")
   end
 end
 ```
@@ -102,7 +102,7 @@ catalyst update
 
 ### Semantic Versioning
 
-- **MAJOR** (2.0.0): Breaking changes
+- **MAJOR** (0.1.0): Breaking changes
 - **MINOR** (2.1.0): New features, backwards compatible
 - **PATCH** (2.0.1): Bug fixes
 

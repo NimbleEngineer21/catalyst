@@ -238,7 +238,7 @@
 - Rollback works if update fails
 
 **Testing:**
-- Test update from v2.0.0 to v2.0.1
+- Test update from v0.1.0 to v2.0.1
 - Test with customized BMAD agents
 - Test with modified templates
 - Test interrupted update

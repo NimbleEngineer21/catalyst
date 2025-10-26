@@ -403,7 +403,7 @@ describe('Config Command Integration Tests', () => {
     // Create test config
     const testConfig = {
       general: {
-        version: '2.0.0',
+        version: '0.1.0',
         project_types: ['TypeScript', 'Python'],
       },
       mcp_servers: {
@@ -440,7 +440,7 @@ describe('Config Command Integration Tests', () => {
       const output = consoleSpy.mock.calls.map((c) => c[0]).join('\n');
       expect(output).toContain('general');
       expect(output).toContain('version');
-      expect(output).toContain('2.0.0');
+      expect(output).toContain('0.1.0');
     });
 
     it('should output JSON with --json flag', async () => {
@@ -451,7 +451,7 @@ describe('Config Command Integration Tests', () => {
       const output = consoleSpy.mock.calls[0][0];
       const json = JSON.parse(output);
 
-      expect(json.general.version).toBe('2.0.0');
+      expect(json.general.version).toBe('0.1.0');
       expect(json.preferences.auto_update).toBe(true);
     });
 
@@ -509,7 +509,7 @@ describe('Config Command Integration Tests', () => {
         'general.version',
       ]);
 
-      expect(consoleSpy).toHaveBeenCalledWith('2.0.0');
+      expect(consoleSpy).toHaveBeenCalledWith('0.1.0');
     });
 
     it('should get nested value with dot notation', async () => {

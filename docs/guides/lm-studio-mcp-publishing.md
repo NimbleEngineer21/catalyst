@@ -74,26 +74,26 @@ LM Studio uses `mcp.json` configuration files located at:
   "mcpServers": {
     "catalyst-docker": {
       "command": "node",
-      "args": ["/opt/homebrew/Cellar/catalyst/2.0.0/mcp-servers/docker/dist/index.js"]
+      "args": ["/opt/homebrew/Cellar/catalyst/0.1.0/mcp-servers/docker/dist/index.js"]
     },
     "catalyst-postgres": {
       "command": "node",
-      "args": ["/opt/homebrew/Cellar/catalyst/2.0.0/mcp-servers/postgres/dist/index.js"],
+      "args": ["/opt/homebrew/Cellar/catalyst/0.1.0/mcp-servers/postgres/dist/index.js"],
       "env": {
         "DATABASE_URL": "${DATABASE_URL}"
       }
     },
     "catalyst-xcode": {
       "command": "node",
-      "args": ["/opt/homebrew/Cellar/catalyst/2.0.0/mcp-servers/xcode/dist/index.js"]
+      "args": ["/opt/homebrew/Cellar/catalyst/0.1.0/mcp-servers/xcode/dist/index.js"]
     },
     "catalyst-storybook": {
       "command": "node",
-      "args": ["/opt/homebrew/Cellar/catalyst/2.0.0/mcp-servers/storybook/dist/index.js"]
+      "args": ["/opt/homebrew/Cellar/catalyst/0.1.0/mcp-servers/storybook/dist/index.js"]
     },
     "catalyst-vite": {
       "command": "node",
-      "args": ["/opt/homebrew/Cellar/catalyst/2.0.0/mcp-servers/vite/dist/index.js"]
+      "args": ["/opt/homebrew/Cellar/catalyst/0.1.0/mcp-servers/vite/dist/index.js"]
     }
   }
 }
@@ -243,7 +243,7 @@ npm publish --access public
 ```json
 {
   "name": "@catalyst/mcp-docker",
-  "version": "2.0.0",
+  "version": "0.1.0",
   "description": "Catalyst MCP Server for Docker management",
   "main": "dist/index.js",
   "bin": {
@@ -506,7 +506,7 @@ describe('LM Studio MCP Integration', () => {
 
 3. **Test server directly:**
    ```bash
-   node /opt/homebrew/Cellar/catalyst/2.0.0/mcp-servers/docker/dist/index.js
+   node /opt/homebrew/Cellar/catalyst/0.1.0/mcp-servers/docker/dist/index.js
    ```
 
 4. **Restart LM Studio** completely

@@ -2,7 +2,7 @@
 
 **Complete AI-Powered Development Stack with MCP Servers + BMAD Integration**
 
-**Version:** 2.0.0
+**Version:** 0.1.0
 **Date:** October 26, 2025
 **Status:** In Development
 **Distribution:** Homebrew
@@ -166,7 +166,7 @@ code .  # Open in VS Code
 catalyst verify
 
 # Expected output:
-# ✅ Catalyst 2.0.0
+# ✅ Catalyst 0.1.0
 # ✅ BMAD Method 4.44.1
 # ✅ 8 MCP servers connected
 # ✅ LM Studio running
@@ -578,7 +578,7 @@ brew upgrade catalyst  # Gets new Catalyst + BMAD
 catalyst update        # Applies updates, preserves customizations
 
 # Output:
-# ✅ Catalyst 2.0.0 → 2.1.0
+# ✅ Catalyst 0.1.0 → 0.2.0
 # ✅ BMAD 4.44.1 → 4.45.0
 # ✅ Backed up 3 customized files
 # ✅ Updated successfully!
@@ -809,15 +809,15 @@ $ brew tap your-org/catalyst
 $ brew install catalyst
 
 ==> Installing catalyst from your-org/catalyst
-==> Downloading https://github.com/your-org/catalyst/releases/download/v2.0.0/catalyst-2.0.0.tar.gz
+==> Downloading https://github.com/your-org/catalyst/releases/download/v0.1.0/catalyst-0.1.0.tar.gz
 ==> Installing dependencies: node
 ==> Installing catalyst
-🍺  /opt/homebrew/Cellar/catalyst/2.0.0: 1,234 files, 45.6MB
+🍺  /opt/homebrew/Cellar/catalyst/0.1.0: 1,234 files, 45.6MB
 
 $ catalyst setup
 
 ┌─────────────────────────────────────────┐
-│     Catalyst Setup Wizard v2.0.0        │
+│     Catalyst Setup Wizard v0.1.0        │
 └─────────────────────────────────────────┘
 
 🔍 Detecting your environment...
@@ -898,7 +898,7 @@ Try: @analyst create project brief
 ```bash
 $ brew upgrade catalyst
 
-==> Upgrading catalyst 2.0.0 -> 2.1.0
+==> Upgrading catalyst 0.1.0 -> 2.1.0
 
 $ catalyst update
 
@@ -1184,6 +1184,6 @@ MIT License - see [LICENSE](../LICENSE) file
 **Built with BMAD methodology**
 
 *Last Updated: October 26, 2025*
-*Version: 2.0.0*
+*Version: 0.1.0*
 
 ---

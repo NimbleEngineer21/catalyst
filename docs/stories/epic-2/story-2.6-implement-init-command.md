@@ -637,7 +637,7 @@ describe('Init Command Integration Tests', () => {
   it('should create .env.example for Python projects', async () => {
     await writeFile(
       path.join(testProjectDir, 'requirements.txt'),
-      'flask==2.0.0'
+      'flask==0.1.0'
     );
 
     vi.spyOn(inquirer, 'prompt').mockResolvedValueOnce({

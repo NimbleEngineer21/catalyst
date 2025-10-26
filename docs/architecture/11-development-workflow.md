@@ -1,6 +1,6 @@
 # Development Workflow
 
-**Version:** 2.0.0
+**Version:** 0.1.0
 **Last Updated:** October 26, 2025
 
 [Back to Architecture Index](README.md)
@@ -104,7 +104,7 @@ npm unlink
 ```json
 {
   "name": "catalyst",
-  "version": "2.0.0",
+  "version": "0.1.0",
   "description": "AI-powered development environment",
   "main": "dist/index.js",
   "bin": {

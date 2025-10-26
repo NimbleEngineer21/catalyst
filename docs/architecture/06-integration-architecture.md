@@ -1,6 +1,6 @@
 # Integration Architecture
 
-**Version:** 2.0.0
+**Version:** 0.1.0
 **Last Updated:** October 26, 2025
 
 [Back to Architecture Index](README.md)
@@ -181,18 +181,18 @@ Catalyst publishes custom MCP servers for use in LM Studio.
   "mcpServers": {
     "catalyst-docker": {
       "command": "node",
-      "args": ["/opt/homebrew/Cellar/catalyst/2.0.0/mcp-servers/docker/dist/index.js"]
+      "args": ["/opt/homebrew/Cellar/catalyst/0.1.0/mcp-servers/docker/dist/index.js"]
     },
     "catalyst-postgres": {
       "command": "node",
-      "args": ["/opt/homebrew/Cellar/catalyst/2.0.0/mcp-servers/postgres/dist/index.js"],
+      "args": ["/opt/homebrew/Cellar/catalyst/0.1.0/mcp-servers/postgres/dist/index.js"],
       "env": {
         "DATABASE_URL": "${DATABASE_URL}"
       }
     },
     "catalyst-xcode": {
       "command": "node",
-      "args": ["/opt/homebrew/Cellar/catalyst/2.0.0/mcp-servers/xcode/dist/index.js"]
+      "args": ["/opt/homebrew/Cellar/catalyst/0.1.0/mcp-servers/xcode/dist/index.js"]
     }
   }
 }
