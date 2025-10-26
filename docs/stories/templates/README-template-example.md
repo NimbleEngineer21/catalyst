@@ -10,7 +10,7 @@
 
 > Your AI-powered development environment with local-first privacy and structured methodology
 
-[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/your-org/catalyst/releases)
+[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/your-org/catalyst/releases)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![Build Status](https://github.com/your-org/catalyst/workflows/CI/badge.svg)](https://github.com/your-org/catalyst/actions)
 [![Homebrew](https://img.shields.io/badge/homebrew-available-orange.svg)](https://formulae.brew.sh/formula/catalyst)
@@ -192,7 +192,7 @@ Catalyst includes these MCP servers out of the box:
 
 ## 📊 Project Status
 
-**Current Version:** 2.0.0 (MVP in active development)
+**Current Version:** 0.1.0 (MVP in active development)
 
 **Roadmap:**
 - ✅ Core CLI implementation

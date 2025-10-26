@@ -406,7 +406,7 @@ describe('Verifier Module', () => {
     it('should pass when config exists and is valid', async () => {
       vi.mocked(exists).mockResolvedValue(true);
       vi.mocked(loadGlobalConfig).mockResolvedValue({
-        general: { version: '2.0.0' },
+        general: { version: '0.1.0' },
         mcp_servers: {},
         bmad: {},
       });
@@ -414,7 +414,7 @@ describe('Verifier Module', () => {
       const result = await checkConfigFile();
 
       expect(result.status).toBe('pass');
-      expect(result.message).toContain('v2.0.0');
+      expect(result.message).toContain('v0.1.0');
       expect(result.details.path).toBe(configPath);
     });
 
@@ -554,7 +554,7 @@ describe('Verifier Module', () => {
       });
       vi.mocked(exists).mockResolvedValue(true);
       vi.mocked(loadGlobalConfig).mockResolvedValue({
-        general: { version: '2.0.0' },
+        general: { version: '0.1.0' },
       });
       vi.mocked(writeFile).mockResolvedValue(undefined);
       vi.mocked(remove).mockResolvedValue(undefined);
@@ -593,7 +593,7 @@ describe('Verifier Module', () => {
       });
       vi.mocked(exists).mockResolvedValue(true);
       vi.mocked(loadGlobalConfig).mockResolvedValue({
-        general: { version: '2.0.0' },
+        general: { version: '0.1.0' },
       });
       vi.mocked(writeFile).mockResolvedValue(undefined);
       vi.mocked(remove).mockResolvedValue(undefined);
@@ -670,7 +670,7 @@ describe('Verify Command Integration Tests', () => {
     });
     vi.mocked(exists).mockResolvedValue(true);
     vi.mocked(loadGlobalConfig).mockResolvedValue({
-      general: { version: '2.0.0' },
+      general: { version: '0.1.0' },
     });
 
     await expect(

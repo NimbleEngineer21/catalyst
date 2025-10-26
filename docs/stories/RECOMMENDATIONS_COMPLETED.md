@@ -282,7 +282,7 @@ All recommendations from the PO Master Checklist validation have been implemente
 
 **Launch Checklist:**
 - Make repository public
-- Publish v2.0.0 release
+- Publish v0.1.0 release
 - Submit to Homebrew
 - Announce on Product Hunt, social media
 - Welcome first contributors

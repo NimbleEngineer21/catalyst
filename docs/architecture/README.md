@@ -1,6 +1,6 @@
 # Catalyst Architecture Documentation
 
-**Version:** 2.0.0
+**Version:** 0.1.0
 **Last Updated:** October 26, 2025
 **Status:** Complete - Ready for Implementation
 

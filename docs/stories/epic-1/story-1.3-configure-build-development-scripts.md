@@ -148,7 +148,7 @@ require('../dist/cli/index.js');
 ```json
 {
   "name": "catalyst",
-  "version": "2.0.0",
+  "version": "0.1.0",
   "description": "AI-powered development environment with BMAD methodology and MCP servers",
   "main": "dist/cli/index.js",
   "types": "dist/cli/index.d.ts",

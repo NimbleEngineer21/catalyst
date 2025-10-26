@@ -120,7 +120,7 @@ catalyst/
 ```json
 {
   "name": "catalyst",
-  "version": "2.0.0",
+  "version": "0.1.0",
   "author": "azywicki <81277290+NimbleEngineer21@users.noreply.github.com>",
   "contributors": [
     "azywicki <81277290+NimbleEngineer21@users.noreply.github.com>"
@@ -352,7 +352,7 @@ Catalyst follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md):
 
 **Launch Day:**
 - [ ] Make repository public
-- [ ] Publish v2.0.0 release
+- [ ] Publish v0.1.0 release
 - [ ] Submit to Homebrew
 - [ ] Post on Product Hunt
 - [ ] Announce on social media

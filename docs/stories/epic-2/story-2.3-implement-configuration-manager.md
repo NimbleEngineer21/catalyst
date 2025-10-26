@@ -144,7 +144,7 @@ export type CatalystConfig = z.infer<typeof CatalystConfigSchema>;
 
 // Default config
 const DEFAULT_CONFIG: CatalystConfig = {
-  general: { version: '2.0.0' },
+  general: { version: '0.1.0' },
   mcp_servers: { enabled: [], config: {} },
   bmad: { enabled: true },
   preferences: { auto_update: true, telemetry: false },

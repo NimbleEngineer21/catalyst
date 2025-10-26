@@ -232,7 +232,7 @@ import { verifyCommand } from './cli/commands/verify';
 program
   .name('catalyst')
   .description('AI-powered development environment')
-  .version('2.0.0');
+  .version('0.1.0');
 
 program
   .command('setup')
@@ -337,7 +337,7 @@ export class DockerMCPServer {
 **Global Configuration (~/.catalyst/config.yaml):**
 
 ```yaml
-version: "2.0.0"
+version: "0.1.0"
 installed_at: "2025-10-26T12:00:00Z"
 
 ides:
@@ -421,7 +421,7 @@ overrides:
 
 **Global Installation:**
 ```
-/opt/homebrew/Cellar/catalyst/2.0.0/
+/opt/homebrew/Cellar/catalyst/0.1.0/
 ├── bin/
 │   └── catalyst                    # Main executable (Node.js shebang)
 ├── libexec/
@@ -552,7 +552,7 @@ User sees complete response
 
 ### Build Process
 
-**Triggered by:** Git tag push (e.g., `v2.0.0`)
+**Triggered by:** Git tag push (e.g., `v0.1.0`)
 
 **GitHub Actions Workflow:**
 
@@ -689,7 +689,7 @@ echo "Build complete: build/catalyst-${VERSION}.tar.gz"
 ```json
 {
   "name": "catalyst",
-  "version": "2.0.0",
+  "version": "0.1.0",
   "description": "AI-powered development environment",
   "bmadVersion": "4.44.1"
 }
@@ -912,7 +912,7 @@ cp /path/to/catalyst/Formula/catalyst.rb ./
 # In catalyst repository
 ./scripts/build.sh
 
-# This creates: build/catalyst-2.0.0.tar.gz
+# This creates: build/catalyst-0.1.0.tar.gz
 ```
 
 **Step 3: Update Formula for Local Testing**
@@ -923,9 +923,9 @@ class Catalyst < Formula
   homepage "https://github.com/your-org/catalyst"
 
   # Point to local tarball
-  url "file:///path/to/catalyst/build/catalyst-2.0.0.tar.gz"
-  sha256 "..." # Run: shasum -a 256 build/catalyst-2.0.0.tar.gz
-  version "2.0.0"
+  url "file:///path/to/catalyst/build/catalyst-0.1.0.tar.gz"
+  sha256 "..." # Run: shasum -a 256 build/catalyst-0.1.0.tar.gz
+  version "0.1.0"
 
   # ... rest of formula
 end

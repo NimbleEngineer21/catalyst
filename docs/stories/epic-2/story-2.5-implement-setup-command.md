@@ -210,7 +210,7 @@ export const setupCommand = new Command('setup')
 
     const config = {
       general: {
-        version: '2.0.0',
+        version: '0.1.0',
         project_types: answers.projectTypes,
       },
       mcp_servers: {

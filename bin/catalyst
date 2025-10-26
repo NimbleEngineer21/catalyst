@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+/**
+ * Catalyst CLI Entry Point
+ * This file will be implemented in Story 1.3
+ */
+
+console.log('Catalyst CLI - Coming soon!');

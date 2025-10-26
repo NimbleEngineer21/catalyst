@@ -1,6 +1,6 @@
 # Catalyst Architecture Overview
 
-**Version:** 2.0.0
+**Version:** 0.1.0
 **Last Updated:** October 26, 2025
 
 [Back to Architecture Index](README.md)
@@ -33,7 +33,7 @@ This architecture supports AI-driven development by providing clear boundaries, 
 
 | Date | Version | Description | Author |
 |------|---------|-------------|--------|
-| 2025-10-26 | 2.0.0 | Initial architecture (TypeScript/Node.js) | Architecture Team |
+| 2025-10-26 | 0.1.0 | Initial architecture (TypeScript/Node.js) | Architecture Team |
 
 ---
 

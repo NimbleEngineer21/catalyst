@@ -1,6 +1,6 @@
 # Product Requirements Document: Catalyst
 
-**Version:** 2.0.0
+**Version:** 0.1.0
 **Last Updated:** October 26, 2025
 **Status:** Draft
 **Owner:** Development Team
@@ -261,7 +261,7 @@ Catalyst provides:
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
 | 1.0.0 | Oct 26, 2025 | Dev Team | Initial draft based on project brief |
-| 2.0.0 | Oct 26, 2025 | Dev Team | Complete rewrite with Homebrew distribution model |
+| 0.1.0 | Oct 26, 2025 | Dev Team | Complete rewrite with Homebrew distribution model |
 
 ---
 

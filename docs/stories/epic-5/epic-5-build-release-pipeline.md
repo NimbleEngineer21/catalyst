@@ -117,7 +117,7 @@ This epic delivers the complete CI/CD infrastructure for Catalyst, including:
 
 **Acceptance Criteria:**
 1. .github/workflows/release.yml created
-2. Triggers on tags matching 'v*' (e.g., v2.0.0)
+2. Triggers on tags matching 'v*' (e.g., v0.1.0)
 3. Runs all tests first
 4. Builds CLI via npm run build
 5. Installs BMAD via scripts/install-bmad.sh
@@ -159,7 +159,7 @@ This epic delivers the complete CI/CD infrastructure for Catalyst, including:
 4. Release notes generated from changelog
 5. GitHub Release includes changelog section
 6. Version bumping documented (manual for now)
-7. Git tags follow semantic versioning (v2.0.0, v2.0.1, etc.)
+7. Git tags follow semantic versioning (v0.1.0, v2.0.1, etc.)
 8. Changelog format supports automated parsing
 
 ---
@@ -195,7 +195,7 @@ This epic delivers the complete CI/CD infrastructure for Catalyst, including:
 
 **Build Process Flow:**
 ```
-1. Developer pushes git tag (e.g., v2.0.0)
+1. Developer pushes git tag (e.g., v0.1.0)
 2. GitHub Actions triggered
 3. Run all tests
 4. Build CLI (npm run build)

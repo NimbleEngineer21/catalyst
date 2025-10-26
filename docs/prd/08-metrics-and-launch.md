@@ -153,7 +153,7 @@ Defined as: A session where a user successfully invokes at least one BMAD agent 
 
 ## Release Plan
 
-### MVP (Version 2.0.0)
+### MVP (Version 0.1.0)
 
 **Development Approach:** AI-First Development
 - Built primarily using BMAD agents and AI tools
@@ -188,7 +188,7 @@ Defined as: A session where a user successfully invokes at least one BMAD agent 
 - Documentation refinement using AI
 
 **Public Launch:**
-- Version 2.0.0 release
+- Version 0.1.0 release
 - Homebrew formula published
 - Public announcement
 - Documentation live
@@ -509,7 +509,7 @@ Defined as: A session where a user successfully invokes at least one BMAD agent 
 4. Begin development (@dev)
 
 **Document Change Log:**
-- v2.0.0 (2025-10-26): Complete PRD created with all shards
+- v0.1.0 (2025-10-26): Complete PRD created with all shards
 
 ---
 
