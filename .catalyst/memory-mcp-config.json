@@ -1,0 +1,152 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/memory-config.schema.json",
+  "name": "catalyst-memory-mcp",
+  "description": "Memory MCP configuration for Catalyst project - provides context for AI agents",
+  "version": "1.0.0",
+  "contextPaths": {
+    "prd": {
+      "path": "docs/prd",
+      "description": "Product Requirements Documents - defines product vision, features, and requirements",
+      "include": ["*.md"],
+      "priority": "high",
+      "loadStrategy": "eager"
+    },
+    "architecture": {
+      "path": "docs/architecture",
+      "description": "Technical Architecture - 13 documents covering system design and implementation details",
+      "include": ["*.md"],
+      "priority": "high",
+      "loadStrategy": "eager"
+    },
+    "stories": {
+      "path": "docs/stories",
+      "description": "Epic and Story definitions - 6 epics with 47 stories, implementation sequence",
+      "include": ["*.md"],
+      "exclude": ["templates/**"],
+      "priority": "high",
+      "loadStrategy": "eager"
+    },
+    "guides": {
+      "path": "docs/guides",
+      "description": "User and operational guides - LM Studio configuration, development setup",
+      "include": ["*.md"],
+      "priority": "medium",
+      "loadStrategy": "lazy"
+    },
+    "projectBrief": {
+      "path": "docs",
+      "description": "High-level project overview and documentation index",
+      "include": ["project_brief.md", "DOCUMENTATION_INDEX.md"],
+      "priority": "high",
+      "loadStrategy": "eager"
+    },
+    "root": {
+      "path": ".",
+      "description": "Root project files - package.json, tsconfig, LICENSE, README",
+      "include": ["package.json", "tsconfig.json", "LICENSE", "README.md", ".gitignore"],
+      "priority": "medium",
+      "loadStrategy": "eager"
+    },
+    "scripts": {
+      "path": "scripts",
+      "description": "Build and automation scripts",
+      "include": ["*.sh", "*.js", "*.ts"],
+      "priority": "low",
+      "loadStrategy": "lazy"
+    },
+    "formula": {
+      "path": "Formula",
+      "description": "Homebrew formula for distribution",
+      "include": ["*.rb"],
+      "priority": "low",
+      "loadStrategy": "lazy"
+    }
+  },
+  "knowledgeGraph": {
+    "enabled": true,
+    "relationships": [
+      {
+        "type": "implements",
+        "from": "stories",
+        "to": "architecture",
+        "description": "Stories implement architectural specifications"
+      },
+      {
+        "type": "defines",
+        "from": "prd",
+        "to": "architecture",
+        "description": "PRD defines requirements that architecture fulfills"
+      },
+      {
+        "type": "guides",
+        "from": "guides",
+        "to": "architecture",
+        "description": "Guides explain how to use architectural components"
+      },
+      {
+        "type": "sequences",
+        "from": "stories/IMPLEMENTATION_SEQUENCE.md",
+        "to": "stories/epic-*.md",
+        "description": "Implementation sequence defines story execution order"
+      }
+    ]
+  },
+  "memoryRetention": {
+    "shortTerm": {
+      "enabled": true,
+      "maxItems": 100,
+      "ttl": "1h"
+    },
+    "longTerm": {
+      "enabled": true,
+      "storePath": ".catalyst/memory-store",
+      "indexFiles": true
+    }
+  },
+  "queryOptimization": {
+    "enableSemanticSearch": true,
+    "enableFullTextSearch": true,
+    "cacheResults": true,
+    "cacheTTL": "30m"
+  },
+  "agentProfiles": {
+    "po": {
+      "name": "Product Owner (Sarah)",
+      "primaryContexts": ["prd", "stories", "projectBrief"],
+      "secondaryContexts": ["architecture", "guides"],
+      "focusAreas": ["product requirements", "user stories", "acceptance criteria", "roadmap"]
+    },
+    "architect": {
+      "name": "Architect (Mike)",
+      "primaryContexts": ["architecture", "prd", "stories"],
+      "secondaryContexts": ["guides", "root"],
+      "focusAreas": ["system design", "technical decisions", "architecture patterns", "technology stack"]
+    },
+    "developer": {
+      "name": "Developer (Alex)",
+      "primaryContexts": ["stories", "architecture", "guides"],
+      "secondaryContexts": ["prd", "root", "scripts"],
+      "focusAreas": ["implementation", "code structure", "testing", "development workflow"]
+    },
+    "analyst": {
+      "name": "Analyst (Mary)",
+      "primaryContexts": ["prd", "architecture", "stories"],
+      "secondaryContexts": ["guides", "projectBrief"],
+      "focusAreas": ["requirements analysis", "research", "documentation", "dependencies"]
+    },
+    "qa": {
+      "name": "QA Engineer (Quinn)",
+      "primaryContexts": ["stories", "architecture", "prd"],
+      "secondaryContexts": ["guides"],
+      "focusAreas": ["acceptance criteria", "testing strategy", "quality assurance", "edge cases"]
+    }
+  },
+  "notes": [
+    "This configuration enables Memory MCP to provide relevant context to AI agents working on Catalyst",
+    "All BMAD agents (PO, Architect, Developer, QA, Analyst) have tailored context access",
+    "Priority determines which contexts are loaded first when memory is limited",
+    "loadStrategy 'eager' means load immediately, 'lazy' means load on demand",
+    "Knowledge graph relationships help agents understand document connections",
+    "Current project phase: Planning Complete, Ready for Story 1.1 implementation"
+  ]
+}

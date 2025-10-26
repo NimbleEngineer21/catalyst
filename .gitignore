@@ -1,0 +1,83 @@
+# BMAD Method Generated Files
+# (Installed via npx during build - not tracked in Git)
+.bmad-core/
+.bmad-*/
+.bmad-2d-unity-game-dev/
+.bmad-2d-phaser-game-dev/
+.bmad-creative-writing/
+.bmad-godot-game-dev/
+.bmad-infrastructure-devops/
+
+# Github
+
+.github/chatmodes
+
+# IDE Configuration (BMAD-generated)
+.augment/
+.claude/
+.cursor/
+.windsurf/
+.trae/
+.qwen/
+.crush/
+.gemini/
+.iflow/
+.clinerules/
+.vscode/
+.idea/
+
+# BMAD-generated files
+AGENTS.md
+opencode.jsonc
+.kilocodemodes
+.roomodes
+web-bundles/
+
+# Build artifacts
+build/
+dist/
+*.tar.gz
+*.tgz
+
+# Dependencies
+node_modules/
+
+# TypeScript
+*.tsbuildinfo
+
+# Testing
+coverage/
+.nyc_output/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*~
+.cache/
+
+# User-specific Catalyst data (keep structure but not content)
+.catalyst/cache/
+.catalyst/logs/
+.catalyst/backups/
+
+# MacOS
+.AppleDouble
+.LSOverride

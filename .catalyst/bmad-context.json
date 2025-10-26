@@ -1,0 +1,346 @@
+{
+  "$schema": "https://bmad-method.dev/schemas/context-config.schema.json",
+  "name": "catalyst-bmad-context",
+  "description": "BMAD agent context configuration for Catalyst project",
+  "version": "1.0.0",
+  "projectPhase": "planning-complete",
+  "contextFiles": {
+    "essential": {
+      "description": "Critical files that all agents should be aware of",
+      "files": [
+        "docs/DOCUMENTATION_INDEX.md",
+        "docs/project_brief.md",
+        "docs/prd/prd.md",
+        "docs/architecture/README.md",
+        "docs/stories/README.md",
+        "docs/stories/IMPLEMENTATION_SEQUENCE.md",
+        "package.json",
+        "LICENSE"
+      ]
+    },
+    "prd": {
+      "description": "Product Requirements Documents",
+      "basePath": "docs/prd",
+      "files": [
+        "prd.md",
+        "01-vision-and-goals.md",
+        "02-users-and-use-cases.md",
+        "03-features-and-requirements.md",
+        "04-technical-architecture.md",
+        "05-mcp-servers.md",
+        "06-bmad-integration.md",
+        "07-user-experience.md",
+        "08-metrics-and-launch.md"
+      ]
+    },
+    "architecture": {
+      "description": "Technical Architecture Documentation",
+      "basePath": "docs/architecture",
+      "files": [
+        "README.md",
+        "01-overview.md",
+        "02-technology-stack.md",
+        "03-cli-architecture.md",
+        "04-mcp-server-architecture.md",
+        "05-build-and-release.md",
+        "06-integration-architecture.md",
+        "07-data-architecture.md",
+        "08-security-architecture.md",
+        "09-testing-architecture.md",
+        "10-project-structure.md",
+        "11-development-workflow.md",
+        "12-deployment-architecture.md",
+        "13-design-decisions.md"
+      ]
+    },
+    "stories": {
+      "description": "Epic and Story Definitions",
+      "basePath": "docs/stories",
+      "files": [
+        "README.md",
+        "IMPLEMENTATION_SEQUENCE.md",
+        "OSS_COMMUNITY_READINESS.md",
+        "epic-1-project-scaffolding.md",
+        "epic-2-core-cli-implementation.md",
+        "epic-3-mcp-server-framework.md",
+        "epic-4-bmad-integration.md",
+        "epic-5-build-release-pipeline.md",
+        "epic-6-documentation-launch.md"
+      ]
+    },
+    "guides": {
+      "description": "User and Operational Guides",
+      "basePath": "docs/guides",
+      "files": [
+        "README.md",
+        "lm-studio-models.md",
+        "lm-studio-mcp-publishing.md"
+      ]
+    },
+    "templates": {
+      "description": "Story implementation templates",
+      "basePath": "docs/stories/templates",
+      "files": [
+        "README-template-example.md"
+      ]
+    }
+  },
+  "agentContextMapping": {
+    "po": {
+      "agent": "Product Owner (Sarah)",
+      "role": "Define product requirements, write user stories, manage backlog",
+      "primaryContext": [
+        "essential",
+        "prd",
+        "stories"
+      ],
+      "secondaryContext": [
+        "architecture",
+        "guides"
+      ],
+      "workingFiles": [
+        "docs/stories/*.md",
+        "docs/prd/*.md",
+        "docs/stories/IMPLEMENTATION_SEQUENCE.md"
+      ],
+      "responsibilities": [
+        "Writing and refining user stories",
+        "Defining acceptance criteria",
+        "Prioritizing backlog",
+        "Managing epic structure",
+        "Validating product requirements"
+      ]
+    },
+    "architect": {
+      "agent": "Architect (Mike)",
+      "role": "Design system architecture, make technical decisions",
+      "primaryContext": [
+        "essential",
+        "architecture",
+        "prd"
+      ],
+      "secondaryContext": [
+        "stories",
+        "guides"
+      ],
+      "workingFiles": [
+        "docs/architecture/*.md",
+        "docs/prd/04-technical-architecture.md",
+        "docs/prd/05-mcp-servers.md",
+        "package.json",
+        "tsconfig.json"
+      ],
+      "responsibilities": [
+        "System architecture design",
+        "Technology stack selection",
+        "Design patterns and principles",
+        "Technical documentation",
+        "Architectural decision records"
+      ]
+    },
+    "developer": {
+      "agent": "Developer (Alex)",
+      "role": "Implement features, write code, create tests",
+      "primaryContext": [
+        "essential",
+        "stories",
+        "architecture"
+      ],
+      "secondaryContext": [
+        "prd",
+        "guides",
+        "templates"
+      ],
+      "workingFiles": [
+        "src/**/*",
+        "tests/**/*",
+        "docs/stories/epic-*.md",
+        "docs/architecture/*.md",
+        "package.json",
+        "tsconfig.json"
+      ],
+      "responsibilities": [
+        "Implementing user stories",
+        "Writing unit and integration tests",
+        "Following architecture patterns",
+        "Code reviews",
+        "Technical documentation"
+      ]
+    },
+    "analyst": {
+      "agent": "Analyst (Mary)",
+      "role": "Research, analyze requirements, document findings",
+      "primaryContext": [
+        "essential",
+        "prd",
+        "architecture"
+      ],
+      "secondaryContext": [
+        "stories",
+        "guides"
+      ],
+      "workingFiles": [
+        "docs/prd/*.md",
+        "docs/architecture/*.md",
+        "docs/guides/*.md",
+        "docs/project_brief.md"
+      ],
+      "responsibilities": [
+        "Requirements analysis",
+        "Technical research",
+        "Dependency evaluation",
+        "Documentation",
+        "Feasibility studies"
+      ]
+    },
+    "qa": {
+      "agent": "QA Engineer (Quinn)",
+      "role": "Test planning, quality assurance, validation",
+      "primaryContext": [
+        "essential",
+        "stories",
+        "architecture"
+      ],
+      "secondaryContext": [
+        "prd",
+        "guides"
+      ],
+      "workingFiles": [
+        "tests/**/*",
+        "docs/stories/epic-*.md",
+        "docs/architecture/09-testing-architecture.md",
+        "docs/prd/03-features-and-requirements.md"
+      ],
+      "responsibilities": [
+        "Test plan creation",
+        "Acceptance criteria validation",
+        "Quality assurance",
+        "Bug identification",
+        "Testing documentation"
+      ]
+    },
+    "devops": {
+      "agent": "DevOps Engineer (Diana)",
+      "role": "Build pipeline, deployment, CI/CD",
+      "primaryContext": [
+        "essential",
+        "architecture"
+      ],
+      "secondaryContext": [
+        "stories",
+        "prd"
+      ],
+      "workingFiles": [
+        ".github/workflows/*.yml",
+        "scripts/*.sh",
+        "Formula/catalyst.rb",
+        "docs/architecture/05-build-and-release.md",
+        "docs/architecture/12-deployment-architecture.md"
+      ],
+      "responsibilities": [
+        "CI/CD pipeline setup",
+        "Build automation",
+        "Deployment scripts",
+        "Release management",
+        "Infrastructure as code"
+      ]
+    },
+    "tech-writer": {
+      "agent": "Technical Writer (Taylor)",
+      "role": "User documentation, guides, API docs",
+      "primaryContext": [
+        "essential",
+        "guides",
+        "prd"
+      ],
+      "secondaryContext": [
+        "architecture",
+        "stories"
+      ],
+      "workingFiles": [
+        "docs/guides/*.md",
+        "README.md",
+        "docs/DOCUMENTATION_INDEX.md",
+        "docs/project_brief.md"
+      ],
+      "responsibilities": [
+        "User guide creation",
+        "API documentation",
+        "Tutorial writing",
+        "Documentation structure",
+        "Content clarity and accuracy"
+      ]
+    }
+  },
+  "projectStatus": {
+    "currentPhase": "planning-complete",
+    "readyForImplementation": true,
+    "nextMilestone": "Epic 1, Story 1.1 - Initialize TypeScript Project Structure",
+    "completedArtifacts": {
+      "prd": "✅ Complete - 8 documents",
+      "architecture": "✅ Complete - 13 documents",
+      "stories": "✅ Complete - 6 epics, 47 stories",
+      "ossFoundation": "✅ Planned - LICENSE, governance files",
+      "documentation": "✅ Organized - architecture/, prd/, stories/, guides/"
+    },
+    "readinessScore": "91%",
+    "criticalBlockers": 0
+  },
+  "workflowIntegration": {
+    "storyImplementation": {
+      "description": "Workflow for implementing a user story",
+      "steps": [
+        "1. PO: Present story to team (read from docs/stories/epic-*.md)",
+        "2. Architect: Review technical implications (reference docs/architecture/)",
+        "3. Developer: Implement story (follow acceptance criteria)",
+        "4. QA: Validate acceptance criteria (test against story requirements)",
+        "5. PO: Accept or request changes"
+      ],
+      "contextRequired": ["stories", "architecture", "prd"]
+    },
+    "architectureDecision": {
+      "description": "Workflow for making architectural decisions",
+      "steps": [
+        "1. Architect: Analyze requirement (from PRD or story)",
+        "2. Analyst: Research options and dependencies",
+        "3. Architect: Propose solution (update docs/architecture/)",
+        "4. Developer: Validate feasibility",
+        "5. PO: Approve decision"
+      ],
+      "contextRequired": ["architecture", "prd", "stories"]
+    },
+    "epicPlanning": {
+      "description": "Workflow for planning new epic",
+      "steps": [
+        "1. PO: Define epic goal and description",
+        "2. Architect: Define technical approach",
+        "3. PO: Break down into stories",
+        "4. QA: Define acceptance criteria",
+        "5. PO: Prioritize and sequence stories"
+      ],
+      "contextRequired": ["prd", "architecture", "stories"]
+    }
+  },
+  "codebaseStructure": {
+    "status": "planned",
+    "plannedDirectories": {
+      "src/": "Source code (TypeScript) - Story 1.1",
+      "tests/": "Test files - Story 1.2",
+      "mcp-servers/": "Custom MCP servers - Epic 3",
+      "bin/": "Executable entry point - Story 1.3",
+      "scripts/": "Build and automation scripts - Epic 5",
+      "config/": "Configuration files - Story 1.1",
+      "templates/": "BMAD templates - Story 4.2",
+      "Formula/": "Homebrew formula - Story 5.5"
+    },
+    "currentState": "Only documentation exists - no source code yet"
+  },
+  "notes": [
+    "Project is in planning phase - PRD, architecture, and stories complete",
+    "No source code exists yet - ready to begin Story 1.1",
+    "All BMAD agents have context paths configured for their roles",
+    "Memory MCP should load these contexts to provide agent awareness",
+    "This configuration file will be updated as implementation progresses",
+    "Next major update: After Epic 1 completion (project scaffolding)"
+  ]
+}

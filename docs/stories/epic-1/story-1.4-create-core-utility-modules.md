@@ -1,0 +1,389 @@
+# Story 1.4: Create Core Utility Modules
+
+**Epic:** Epic 1 - Project Scaffolding & Development Environment
+**Story ID:** 1.4
+**Priority:** P0 (Must Have)
+**Status:** Approved
+**Estimated Effort:** 6 hours
+
+---
+
+## User Story
+
+**As a** developer,
+**I want** core utility functions for filesystem, shell, and logging,
+**so that** I can reuse common functionality across the codebase.
+
+---
+
+## Context
+
+This story creates the foundational utility modules that will be used throughout Catalyst. These utilities provide type-safe, tested wrappers around common operations like filesystem access, shell command execution, logging, and error handling.
+
+**Dependencies:**
+- Story 1.1: Initialize TypeScript Project Structure
+- Story 1.2: Set Up Testing Infrastructure
+- Story 1.3: Configure Build and Development Scripts
+
+**Enables:**
+- Epic 2: Core CLI Implementation (will use these utilities extensively)
+- Epic 3: MCP Server Framework (will use logging and filesystem utilities)
+- Epic 4: BMAD Integration (will use shell and filesystem utilities)
+- All future development work
+
+---
+
+## Acceptance Criteria
+
+### 1. Filesystem Utilities (`src/utils/filesystem.ts`)
+- [ ] Module created with fs-extra wrappers
+- [ ] Functions implemented:
+  - `readFile(path: string): Promise<string>` - Read file as string
+  - `readJson(path: string): Promise<any>` - Read and parse JSON
+  - `writeFile(path: string, content: string): Promise<void>` - Write file
+  - `writeJson(path: string, data: any): Promise<void>` - Write JSON with formatting
+  - `exists(path: string): Promise<boolean>` - Check if path exists
+  - `ensureDir(path: string): Promise<void>` - Create directory if not exists
+  - `remove(path: string): Promise<void>` - Remove file or directory
+  - `copy(src: string, dest: string): Promise<void>` - Copy file or directory
+- [ ] All functions have JSDoc comments
+- [ ] All functions handle errors gracefully
+- [ ] TypeScript types properly defined
+
+### 2. Shell Utilities (`src/utils/shell.ts`)
+- [ ] Module created with execa wrappers
+- [ ] Functions implemented:
+  - `exec(command: string, args?: string[], options?: ExecOptions): Promise<ExecResult>` - Execute command
+  - `execSilent(command: string, args?: string[]): Promise<ExecResult>` - Execute without output
+  - `execLive(command: string, args?: string[]): Promise<ExecResult>` - Execute with live output
+  - `commandExists(command: string): Promise<boolean>` - Check if command available
+- [ ] Types defined:
+  - `ExecOptions` - Options for command execution
+  - `ExecResult` - Result with stdout, stderr, exitCode
+- [ ] Error handling for command failures
+- [ ] Timeout support
+- [ ] Working directory support
+
+### 3. Logger Utilities (`src/utils/logger.ts`)
+- [ ] Module created with chalk-based logging
+- [ ] Functions implemented:
+  - `info(message: string): void` - Info level log (blue)
+  - `success(message: string): void` - Success log (green)
+  - `warn(message: string): void` - Warning log (yellow)
+  - `error(message: string): void` - Error log (red)
+  - `debug(message: string): void` - Debug log (gray, only if DEBUG=true)
+  - `spinner(text: string): Spinner` - Create ora spinner
+- [ ] Spinner interface:
+  - `start()` - Start spinner
+  - `succeed(text?: string)` - Success state
+  - `fail(text?: string)` - Failure state
+  - `stop()` - Stop spinner
+- [ ] Log levels configurable via environment variable
+- [ ] Timestamps optional
+
+### 4. Error Utilities (`src/utils/errors.ts`)
+- [ ] Custom error classes created:
+  - `CatalystError` - Base error class
+  - `ValidationError` - For validation failures
+  - `FileSystemError` - For filesystem operations
+  - `CommandError` - For shell command failures
+  - `ConfigError` - For configuration issues
+- [ ] Each error class has:
+  - `name: string` - Error type name
+  - `message: string` - Error description
+  - `code: string` - Machine-readable error code
+  - `details?: any` - Additional error context
+- [ ] Error factory functions:
+  - `createError(type: ErrorType, message: string, details?: any): CatalystError`
+- [ ] Error formatting for CLI display
+
+### 5. Type Definitions (`src/types/index.ts`)
+- [ ] Common types defined:
+  - `Config` - Catalyst configuration structure
+  - `CommandOptions` - CLI command options
+  - `ServerConfig` - MCP server configuration
+  - `BMadConfig` - BMAD configuration
+- [ ] Type exports organized
+- [ ] JSDoc comments for all types
+
+### 6. Module Exports (`src/utils/index.ts`)
+- [ ] Barrel export file created
+- [ ] All utility modules re-exported
+- [ ] Clean import paths enabled: `import { logger } from '@/utils'`
+
+### 7. Unit Tests
+- [ ] `tests/unit/utils/filesystem.test.ts` - Test all filesystem functions
+- [ ] `tests/unit/utils/shell.test.ts` - Test shell execution
+- [ ] `tests/unit/utils/logger.test.ts` - Test logging functions
+- [ ] `tests/unit/utils/errors.test.ts` - Test error classes
+- [ ] All tests pass
+- [ ] Code coverage >80% for utils
+
+---
+
+## Technical Implementation Notes
+
+### Filesystem Utilities Example
+
+```typescript
+// src/utils/filesystem.ts
+import fs from 'fs-extra';
+import { FileSystemError } from './errors';
+
+/**
+ * Read file content as string
+ * @param path - File path to read
+ * @returns File content as string
+ */
+export async function readFile(path: string): Promise<string> {
+  try {
+    return await fs.readFile(path, 'utf-8');
+  } catch (error) {
+    throw new FileSystemError(`Failed to read file: ${path}`, { cause: error });
+  }
+}
+
+/**
+ * Read and parse JSON file
+ * @param path - JSON file path
+ * @returns Parsed JSON object
+ */
+export async function readJson<T = any>(path: string): Promise<T> {
+  try {
+    return await fs.readJson(path);
+  } catch (error) {
+    throw new FileSystemError(`Failed to read JSON: ${path}`, { cause: error });
+  }
+}
+
+// ... more functions
+```
+
+### Shell Utilities Example
+
+```typescript
+// src/utils/shell.ts
+import { execa, ExecaError } from 'execa';
+import { CommandError } from './errors';
+
+export interface ExecOptions {
+  cwd?: string;
+  timeout?: number;
+  env?: Record<string, string>;
+}
+
+export interface ExecResult {
+  stdout: string;
+  stderr: string;
+  exitCode: number;
+}
+
+/**
+ * Execute shell command
+ * @param command - Command to execute
+ * @param args - Command arguments
+ * @param options - Execution options
+ * @returns Command result
+ */
+export async function exec(
+  command: string,
+  args: string[] = [],
+  options: ExecOptions = {}
+): Promise<ExecResult> {
+  try {
+    const result = await execa(command, args, {
+      cwd: options.cwd,
+      timeout: options.timeout,
+      env: options.env,
+    });
+
+    return {
+      stdout: result.stdout,
+      stderr: result.stderr,
+      exitCode: result.exitCode,
+    };
+  } catch (error) {
+    const execError = error as ExecaError;
+    throw new CommandError(
+      `Command failed: ${command} ${args.join(' ')}`,
+      {
+        command,
+        args,
+        exitCode: execError.exitCode,
+        stderr: execError.stderr,
+      }
+    );
+  }
+}
+
+// ... more functions
+```
+
+### Logger Utilities Example
+
+```typescript
+// src/utils/logger.ts
+import chalk from 'chalk';
+import ora, { Ora } from 'ora';
+
+/**
+ * Log info message
+ */
+export function info(message: string): void {
+  console.log(chalk.blue('ℹ'), message);
+}
+
+/**
+ * Log success message
+ */
+export function success(message: string): void {
+  console.log(chalk.green('✔'), message);
+}
+
+/**
+ * Log warning message
+ */
+export function warn(message: string): void {
+  console.warn(chalk.yellow('⚠'), message);
+}
+
+/**
+ * Log error message
+ */
+export function error(message: string): void {
+  console.error(chalk.red('✖'), message);
+}
+
+/**
+ * Create spinner for long-running operations
+ */
+export function spinner(text: string): Ora {
+  return ora(text);
+}
+```
+
+### Error Classes Example
+
+```typescript
+// src/utils/errors.ts
+
+export class CatalystError extends Error {
+  code: string;
+  details?: any;
+
+  constructor(message: string, code: string, details?: any) {
+    super(message);
+    this.name = this.constructor.name;
+    this.code = code;
+    this.details = details;
+    Error.captureStackTrace(this, this.constructor);
+  }
+}
+
+export class FileSystemError extends CatalystError {
+  constructor(message: string, details?: any) {
+    super(message, 'FILESYSTEM_ERROR', details);
+  }
+}
+
+export class CommandError extends CatalystError {
+  constructor(message: string, details?: any) {
+    super(message, 'COMMAND_ERROR', details);
+  }
+}
+
+// ... more error classes
+```
+
+---
+
+## Architecture References
+
+- [Technology Stack](../../architecture/02-technology-stack.md) - Library choices
+- [CLI Architecture](../../architecture/03-cli-architecture.md) - How utilities fit into CLI
+- [Testing Architecture](../../architecture/09-testing-architecture.md) - Testing strategy
+
+---
+
+## Testing Strategy
+
+**Test Coverage Requirements:**
+- All utility functions must have unit tests
+- Test success paths and error paths
+- Mock filesystem and shell operations where appropriate
+- Aim for >80% code coverage on utils
+
+**Example Test:**
+```typescript
+// tests/unit/utils/filesystem.test.ts
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { readFile, writeFile, exists } from '@/utils/filesystem';
+import fs from 'fs-extra';
+import path from 'path';
+import os from 'os';
+
+describe('Filesystem Utilities', () => {
+  let testDir: string;
+
+  beforeEach(async () => {
+    testDir = await fs.mkdtemp(path.join(os.tmpdir(), 'catalyst-test-'));
+  });
+
+  afterEach(async () => {
+    await fs.remove(testDir);
+  });
+
+  it('should write and read file', async () => {
+    const filePath = path.join(testDir, 'test.txt');
+    const content = 'Hello, Catalyst!';
+
+    await writeFile(filePath, content);
+    const result = await readFile(filePath);
+
+    expect(result).toBe(content);
+  });
+
+  it('should check if file exists', async () => {
+    const filePath = path.join(testDir, 'test.txt');
+
+    expect(await exists(filePath)).toBe(false);
+    await writeFile(filePath, 'content');
+    expect(await exists(filePath)).toBe(true);
+  });
+});
+```
+
+---
+
+## Definition of Done
+
+- [ ] All acceptance criteria met and verified
+- [ ] All utility modules implemented
+- [ ] All functions have JSDoc comments
+- [ ] All functions have TypeScript types
+- [ ] All utility modules have comprehensive unit tests
+- [ ] Tests pass with >80% coverage
+- [ ] Code follows ESLint and Prettier standards
+- [ ] Barrel export file created (`src/utils/index.ts`)
+- [ ] Code committed with clear commit message
+- [ ] Story reviewed and accepted by PO
+
+---
+
+## Notes
+
+- **Path Aliases:** Use `@/` alias for clean imports (configured in tsconfig.json)
+- **Error Handling:** All utilities should throw typed errors, not generic Errors
+- **Async Operations:** All I/O operations should be async (return Promises)
+- **Testing:** Use temporary directories for filesystem tests (clean up after)
+- **Logging Levels:** Consider adding `LOG_LEVEL` environment variable support
+- **Future Enhancements:**
+  - Progress bars for long operations
+  - Parallel filesystem operations
+  - Retry logic for shell commands
+  - Structured logging (JSON output for CI/CD)
+
+---
+
+**Created:** October 26, 2025
+**Last Updated:** October 26, 2025
