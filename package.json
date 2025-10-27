@@ -2,23 +2,36 @@
   "name": "catalyst",
   "version": "0.1.0",
   "description": "AI-powered development environment with MCP servers and BMAD methodology",
-  "main": "dist/index.js",
+  "main": "dist/cli/index.js",
+  "types": "dist/cli/index.d.ts",
   "type": "module",
   "bin": {
     "catalyst": "./bin/catalyst"
   },
+  "files": [
+    "dist",
+    "bin",
+    "templates",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
-    "dev": "tsx src/index.ts",
     "build": "tsc && chmod +x bin/catalyst",
+    "build:watch": "tsc --watch",
+    "dev": "tsx src/cli/index.ts",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\"",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
     "test:mcp-servers": "bash scripts/test-mcp-servers.sh",
-    "lint": "eslint src --ext .ts",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "type-check": "tsc --noEmit",
-    "clean": "rm -rf dist build",
+    "clean": "rm -rf dist coverage *.tsbuildinfo",
+    "clean:all": "npm run clean && rm -rf node_modules",
+    "check": "npm run type-check && npm run lint && npm run format:check && npm test",
     "prepare": "npm run build"
   },
   "keywords": [

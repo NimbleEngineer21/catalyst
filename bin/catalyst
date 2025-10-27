@@ -2,7 +2,10 @@
 
 /**
  * Catalyst CLI Entry Point
- * This file will be implemented in Story 1.3
+ * Loads the compiled TypeScript CLI from dist/cli/index.js
  */
 
-console.log('Catalyst CLI - Coming soon!');
+import('../dist/cli/index.js').catch((err) => {
+  console.error('Error loading Catalyst CLI:', err.message);
+  process.exit(1);
+});
