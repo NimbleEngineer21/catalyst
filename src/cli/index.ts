@@ -5,7 +5,11 @@
  * Full CLI implementation will be added in Epic 2.
  */
 
-console.log('🚀 Catalyst CLI v0.1.0');
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const { version } = require('../../package.json');
+
+console.log(`🚀 Catalyst CLI v${version}`);
 console.log('Development environment initializing...');
 console.log('Full implementation coming in Epic 2!');
 
